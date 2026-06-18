@@ -1,0 +1,74 @@
+<!-- 주석 -->
+ <!-- html의 기본구조는 !로 자동완성 기능 -->
+ <!DOCTYPE html> <!-- html은 문서의 구조를 정의하는 언어 -->
+ <html lang="ko"> <!-- html은 문서의 구조를 정의하는 언어 -->
+ <head>
+    <meta charset="UTF-8">
+    <!-- meta는 문서에 대한 정보를 정의하는 태그 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- viewport는 화면의 크기와 비율을 정의하는 태그 -->
+    <title>Document</title>
+    <!-- title은 문서의 제목을 정의하는 태그 -->
+ </head>
+ <body>
+    <!-- body는 실제 화면에 보이는 영역 태그 -->
+    <h1>글씨 크기가 가장 큰 제목</h1>
+    <h2>제목2</h2>
+    <h3>제목3</h3>
+    <h4>제목4</h4>
+    <h5>제목5</h5>
+    <h6>제목6</h6>
+
+    <!-- h7은 존재하지 않음 : 에러 안나고 그냥 일반글자. -->
+    <h7>제목7</h7>
+
+    <!-- 문단태그 -->
+     <h3>p태그 : 줄바꿈/공백을 무시함</h3>
+    <p>
+        html은 기본적으로 줄바꿈과 공백을 무시함.
+        <br>태그를 이용하면 줄바꿈 가능 <br>
+        공백을 넣고 싶으면 &nbsp;를 이용하면 &nbsp;&nbsp;&nbsp;&nbsp;됨. <br>
+        값1보다 값2가 크다. n1<n2
+        <br> 특수문자도 기호를 사용한다. &lt; &gt; &amp;
+        
+        <h3>pre태그 : 줄바꿈/공백을 그대로 표현</h3>
+        <pre>
+            이는 pre 태그입니다.
+            줄바꿈과 공백이 그대로 유지됩니다.
+        </pre>
+
+        <hr> <!-- 수평선 -->
+
+        <!-- 텍스트 서식 태그 -->
+        <b>b : 굵은 글씨</b><br>
+        <i>i : 기울임 글씨</i><br>
+        <u>u : 밑줄 글씨</u><br>
+        <em>em : 기울이면서 강조 글씨</em><br>
+        <strong>strong : 강조(굵은) 글씨</strong><br>
+        <mark>mark : 강조(밝은색) 글씨</mark><br>
+        <small>small : 작은 글씨</small><br>
+        <del>del : 취소선 글씨</del><br>
+        <ins>ins : 밑줄 글씨</ins><br>
+
+        <!-- 순서가 있는 목록 태그 : 1, 2, 3 같은 순서가 붙어서 나열됨 -->
+        <ol>
+            <li>첫 번째 항목</li>
+            <li>두 번째 항목</li>
+            <li>세 번째 항목</li>
+        </ol>
+        <ol type="A" reversed> <!-- type 속성으로 번호 스타일 변경 가능 -->
+            <li>첫 번째 항목</li>
+            <li>두 번째 항목</li>
+            <li>세 번째 항목</li>
+        </ol>
+
+        <!-- 순서가 없는 목록 태그 : 순서없이 나열만 -->
+        <ul>
+            <li>첫 번째 항목</li>
+            <li>두 번째 항목</li>
+            <li>세 번째 항목</li>
+        </ul>
+        <!-- ul/ol : 부모태크, li : 자식태그 -->
+    </p>
+ </body>
+ </html>

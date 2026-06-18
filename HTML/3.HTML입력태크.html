@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 하이퍼링크 태그 -->
+    <!-- a태그 : href(이동할 경로), target(_self(현재 탭에서), _blank(새 탭에서)) -->
+    <h1>하이퍼링크 : a태그</h1>
+    <!-- _blank : 새 탭에서 열기, _self : 현재 탭에서 열기 -->
+    <a href="https://www.naver.com" target="_blank">현재 탭에서 네이버로 이동</a>
+    <br>
+    <a href="https://www.naver.com" target="_self">새 탭에서 네이버로 이동</a>
+
+    <br>
+
+    <a href="https://www.google.com" target="_blank">
+        <img src="./public/images.jpg" alt="빵빵이 리본">
+    </a>
+
+    <!-- input / label -->
+    <!-- label로 감싸면 글자를 눌러도 해당 입력 칸이 선택된다. -->
+    <h1> 입력 기존 (input/label)</h1>
+
+    아이디 : <input type="text" value="default_id"  > <br>
+    비밀번호 : <input type="password" value="default_password"> <br>
+    나이 : <input type="number" value="0"> <br>
+
+    <!-- 여러 개 중 무조건 1개 선택 : select, radio -->
+    <h1>radio 버튼</h1>
+    <h3>name속성으로 묶어주고 checked 속성으로 기본 선택 가능</h3>
+    <!--
+        name속성으로 그룹화를 시킬 수 있다.
+        기본 선택을 해야하는 경우는 checked 속성을 사용하면 된다.
+    -->
+    성별 :
+    <label>
+        <input type="radio" name="gender" value="male" checked>남자
+    </label>
+    <label>
+        <input type="radio" name="gender" value="female">여자
+    </label>
+
+    <h1>select 태그</h1>
+    <h3>사용자에게 여러 옵션 중 하나를 선택하도록 제공</h3>
+
+    <select name="age" id="age">
+        <option value="korean">한국어</option>
+        <option value="japanese">일본어</option>
+        <option value="chinese">중국어</option>
+        <option value="english">영어</option>
+    </select>
+
+    <!-- 
+        form 태그 : 사용자 입력을 서버로 전송하는 역할 (get방식 / post방식) 
+        - action : 데이터를 전송할 URL
+        - method : 데이터를 전송하는 방식 (get / post)
+    -->
+
+    <h1>form 태그</h1>
+    <!-- 검색 후 주소창을 보면 ?query=검색어가 보임 -> get방식 -->
+    <!-- 
+        form태그 안에 submit버튼을 누르면 
+        form태그의 action에 지정된 URL로 데이터가 전송됨
+        이때 전송되는 데이터는 form태그 안에 있는
+        input, select, textarea 등의 name속성이
+        value속성 값과 함께 전송됨.
+    -->
+    <form action="https://search.naver.com/search.naver" method="get">
+        <label for="query">검색어:</label>
+        <input type="text" name="query", placeholder="검색어를 입력하세요">
+        <button type="submit">검색</button>
+    </form>
+
+    <!-- form 태그 : post방식 -->
+    <h1>form 태그 : post방식</h1>
+    <form action="https://www.naver.com" method="post">
+        <label for="username">사용자명:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">비밀번호:</label>
+        <input type="password" id="password" name="password">
+        <button type="submit">로그인</button>
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+
+</html>

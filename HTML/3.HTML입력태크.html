@@ -26,7 +26,7 @@
     <!-- label로 감싸면 글자를 눌러도 해당 입력 칸이 선택된다. -->
     <h1> 입력 기존 (input/label)</h1>
 
-    아이디 : <input type="text" value="default_id"  > <br>
+    아이디 : <input type="text" value="default_id"> <br>
     비밀번호 : <input type="password" value="default_password"> <br>
     나이 : <input type="number" value="0"> <br>
 
@@ -72,22 +72,119 @@
     -->
     <form action="https://search.naver.com/search.naver" method="get">
         <label for="query">검색어:</label>
-        <input type="text" name="query", placeholder="검색어를 입력하세요">
+        <input type="text" name="query" , placeholder="검색어를 입력하세요">
         <button type="submit">검색</button>
     </form>
 
     <!-- form 태그 : post방식 -->
     <h1>form 태그 : post방식</h1>
-    <form action="https://www.naver.com" method="post">
-        <label for="username">사용자명:</label>
-        <input type="text" id="username" name="username">
-        <label for="password">비밀번호:</label>
-        <input type="password" id="password" name="password">
+
+    <!--
+        get방식으로 요청 시
+        1. URL에 데이터가 노출됨 (보안에 취약)
+        2. 전송할 수 있는 데이터의 길이가 제한됨 (약 2000자), 넣으면 짤림
+
+        post 방식은
+        1. URL에 노출되지 않음.
+        2. 데이터 크기에 제한이 없음(서버 설정에 따라 다름)
+    -->
+
+    <!-- post방식은 주소창에 데이터가 보이지 않음 -->
+    <!-- 
+        required 속성 : 필수 입력 필드 지정
+        placeholder 속성 : 입력 필드에 안내 문구 표시
+    -->
+    <form action="/signup" method="post">
+        <input type="text" id="username" name="username" placeholder="ID 입력" required>
+        <input type="password" id="password" name="password" placeholder="비밀번호 입력" required>
         <button type="submit">로그인</button>
     </form>
 
-    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- input태그 속성 -->
+    <!-- 
+        type : 입력 필드의 유형 (text, password, number, email 등)
+        id : 요소의 고유 식별자
+        name : 서버로 전송될 때 해당 입력 필드의 이름, radio타입의 경우 그룹화를 위해 동일한 name을 사용
+        value : 입력 필드의 초기 값
+        placeholder : 입력 필드에 표시되는 안내 문구
+        required : 필수 입력 필드 지정
+    -->
 
+    아이디 : <input type="text" name="username" placeholder="ID 입력" required><br>
+    비밀번호 : <input type="password" name="password" placeholder="비밀번호 입력" required><br>
+    나이 : <input type="number" name="age" placeholder="나이 입력"><br>
+    검색 : <input type="text" name="query" placeholder="검색어 입력"><br>
+
+    <!-- textarea 태그 -->
+    <h1>textarea 태그</h1>
+    <label for="message">메시지:</label>
+    <!-- rows : 행 수, cols : 열 수 -->
+    <textarea 
+        id="message" 
+        name="message" 
+        placeholder="메시지를 입력하세요" 
+        rows="5" cols="40"
+        style="resize: none;">
+    </textarea>
+
+    <!-- 숫자/날짜 입력 태그 -->
+    <h1>숫자/날짜 입력 태그</h1>
+    <input
+        type="number"
+        name="score"
+        placeholder="점수 입력"
+        min="0" max="100" step="3"
+    > <br>
+    
+    <input
+        type="date"
+        name="birthdate"
+        placeholder="생년월일 입력"
+    > <br>
+    <input 
+        type="month"
+        name="birthmonth"
+        placeholder="생년월 입력"
+    > <br>
+    <input 
+        type="week"
+        name="birthweek"
+        placeholder="생년주 입력"
+    > <br>
+    <input 
+        type="time"
+        name="birthtime"
+        placeholder="생년월일 입력"
+    > <br>
+    <input 
+        type="datetime-local"
+        name="birthdatetime"
+        placeholder="생년월일 입력"
+    > <br>
+
+    <!-- checkbox -->
+    <!-- 같은 name을 가진 데이터 중 여러 개의 값을 선택할 수 있음 -->
+    <h1>체크박스</h1>
+    <label>
+        <input type="checkbox" name="hobby" value="reading">독서
+    </label>
+    <label>
+        <input type="checkbox" name="hobby" value="sports">운동
+    </label>
+    <label>
+        <input type="checkbox" name="hobby" value="travel">여행
+    </label>
+
+    <!-- button -->
+    <h1>버튼</h1>
+    <!-- type : 버튼의 종류 (submit, reset, button) -->
+    <!-- submit, reset : form태그의 전용버튼 -->
+    <button type="submit">제출</button>
+    <button type="reset">초기화</button>
+    
+    <button type="button" onclick="alert('버튼이 클릭되었습니다!')">버튼</button>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 
 </html>

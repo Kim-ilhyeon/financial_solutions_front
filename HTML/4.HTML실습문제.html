@@ -298,7 +298,7 @@
 
         <h2>회원가입</h2>
         <!-- 여기에 코드를 작성하세요 -->
-        <form action="/signup"  method="post" border="1">
+        <form action="/signup"  method="post" style="border: 1px solid black;">
             <label for="username">아이디 :</label>
                 <input id="username" type="text" name="username" placeholder="아이디 입력" required>
             <br>
@@ -316,30 +316,35 @@
             <br>
 
             <label for="gender">성별 :</label>
-            <input id="gender" type="radio" name="gender" value="male" checked> 남자
-            <input id="gender" type="radio" name="gender" value="female"> 여자
+            <input id="maleInput" type="radio" name="gender" value="male" checked> 남자
+            <input id="femaleInput" type="radio" name="gender" value="female"> 여자
             <br>
 
-            <label for="interest">관심분야 :</label>
-            <input id="interest" type="checkbox" name="interest" value="programing">프로그래밍 
-            <input id="interest" type="checkbox" name="interest" value="exercise"> 운동 
-            <input id="interest" type="checkbox" name="interest" value="game">게임 
+            관심분야 :
+            <input id="programming" type="checkbox" name="interest" value="programming">
+            <label for="programming">프로그래밍</label>
+
+            <input id="exercise" type="checkbox" name="interest" value="exercise">
+            <label for="exercise">운동</label>
+
+            <input id="game" type="checkbox" name="interest" value="game">
+            <label for="game">게임</label>
             <br>
 
             <label for="intro">자기소개</label>
             <br>
-            <textarea name="intro" rows="4" cols="40" placeholder="자기소개를 입력하세요"></textarea>
+            <textarea id="intro" name="intro" rows="4" cols="40" placeholder="자기소개를 입력하세요"></textarea>
             <br>
 
             <label for="language">언어 선택 :</label>
-            <select name="language">
+            <select id="language" name="language">
                 <option value="korean">한국어</option>
                 <option value="english">영어</option>
                 <option value="japanese">일본어</option>
             </select>
 
             <br><br>
-            
+
             <button type="submit">가입하기</button>
             <button type="reset">다시 입력</button>
             

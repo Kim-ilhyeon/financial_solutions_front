@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#1f2733;
+    font-family:Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+.container{
+    width:80%;
+    margin:auto;
+}
+
+.hero{
+    position:relative;
+    padding:80px 0;
+}
+
+.circle{
+    width:110px;
+    height:110px;
+    background:#ececec;
+    border-radius:50%;
+
+    position:absolute;
+    left:110px;
+    top:45px;
+}
+
+.hero h1{
+    color:#3dd2ff;
+    font-size:48px;
+    line-height:1.1;
+    position:relative;
+    z-index:1;
+}
+
+.about{
+    background:#e8e8e8;
+    padding:25px;
+    margin-top:30px;
+    color:#333;
+}
+
+.about h2{
+    color:#2cbff3;
+    margin-bottom:20px;
+}
+
+.about-content{
+    display:flex;
+    gap:30px;
+    margin-bottom:20px;
+}
+
+.profile{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    background:#cfcfcf;
+}
+
+.links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.links button{
+    width:120px;
+    border:none;
+    border-radius:20px;
+    background:#555;
+    color:white;
+    padding:8px;
+    cursor:pointer;
+}
+
+.about p{
+    font-size:14px;
+    line-height:1.8;
+    color:#2cbff3;
+}
+
+.skills{
+    padding:50px 0;
+}
+
+.skills h2{
+    margin-bottom:20px;
+}
+
+.skill-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.skill-box{
+    border:1px solid #008db3;
+    height:120px;
+    padding:10px;
+}
+
+.skill-box h3{
+    color:#2cbff3;
+}
+
+.activity{
+    background:#e8e8e8;
+    padding:50px;
+    color:black;
+}
+
+.activity h2{
+    display:inline-block;
+    background:#d8653d;
+    padding:3px 8px;
+    margin-bottom:30px;
+}
+
+.activity-item{
+    margin-bottom:25px;
+}
+
+.activity-item span{
+    display:block;
+    font-size:12px;
+    color:#666;
+    margin-top:5px;
+}
+
+.project{
+    padding:60px;
+    background:#1f2733;
+}
+
+.project h2{
+    color:#00e0d0;
+    margin-bottom:30px;
+}
+
+.project-card{
+    width:80%;
+    height:180px;
+    border:1px solid #00ffc8;
+    margin-bottom:50px;
+    margin-left:auto;
+    margin-right:auto;
+
+    position:relative;
+}
+
+.project-card.blue{
+    border-color:#234cff;
+}
+
+.project-card span{
+    position:absolute;
+    top:-18px;
+    right:0;
+    font-size:12px;
+    color:white;
+}

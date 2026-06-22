@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    color: #524c4c;
+    background-color: #efefef;
+
+    line-height: 1.6;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+/*링크 밑줄 제거, 글씨 색은 부모에게 상속*/
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 이미지가 부모 폭을 넘지 않게 설정 */
+img {
+    max-width: 100%; /*최대 크기는 화면을 벗어나면 안된다의 설정*/
+    display: block;
+}
+
+input {
+    outline: none;
+}
+
+.btn {
+    border: none;
+    background-color: #4545de;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* 
+    wrapper - 폭을 가두기 위한 큰 틀
+*/
+.wrapper {
+    width: 100%;    /*기본 넓이는 body를 따라감*/
+    max-width: 1120px; /*최대 넓이는 1120px*/
+    margin: 0 auto;
+}
+
+/* 
+    헤더 - 로고, 검색창, 로그인
+*/
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 2px solid #b4b4b4;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #0000b1;
+}
+
+.logo > span {
+    color: black;
+}
+
+/* 
+    검색 창
+    - 내부에 input과 button이 하나의 검색창으로 보이게
+*/
+
+.search {
+    flex: 1; /*모든 요소를 그리고 남은 공간을 비율로 차지*/
+    max-width: 450px;
+    text-align: center;
+    
+    display: flex;
+    flex-direction: row;
+    height: 42px;
+}
+
+.search > input {
+    flex: 1;
+    border: 1px solid #b4b4b4;
+    border-right: none;
+    border-radius: 15px 0 0 15px;
+    padding: 0 16px;
+    font-size: 14px;
+}
+
+.search > input:focus {
+    border-color: #4545de;
+}
+
+.search > button {
+    width: 64px;
+    border: none;
+    background-color: #4545de;
+    color: white;
+    font-size: 18px;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+}
+
+.search > button:hover {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* 헤더 오른쪽 아이템 */
+.header-util {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.header-util > a {
+    border: 1px solid #4545de;
+    border-radius: 4px;
+    background-color: #4545de;
+    color: white;
+    padding: 6px 8px;
+}
+
+.header-util > a:hover {
+    background-color: white;
+    color: #4545de;
+}
+
+/* 네비게이션 드롭다운 */
+.nav {
+    background-color: #458ade;
+}
+
+.nav > ul {
+    display: flex;
+    flex-direction: row;
+
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.nav > ul > li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.nav > ul > li > a {
+    display: block;
+    padding: 16px 8px;
+    color: #efefef;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.nav > ul > li > a:hover {
+    scale: calc(0.98);
+    color: #fff;
+}
+
+/* 하위메뉴 */
+.nav .sub-menu {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    
+    background-color: #fff;
+    border: 1px solid #b4b4b4;
+    border-top: none;
+    box-shadow: 0px 14px 28px #a3a3a3;
+    
+    /* 오퍼시티와 비지빌리티가 세트인지 찾아보기 + 각자 무슨 기능을 하는지도 */
+    /* display: none; */
+    opacity: 0;
+    visibility: hidden;
+    z-index: 10; /*우선순위*/
+
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.18s, visibility 0.1s;
+}
+
+.nav > ul > li:hover > .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.nav .sub-menu a {
+    display: block;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.nav .sub-menu a:hover {
+    font-weight: 800;
+}
+
+/* 메인 컨텐츠 영역 */
+.main {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 24px;
+}
+
+.main > .section {
+    flex: 7;
+    min-width: 0;
+}
+
+.main > .aside {
+    flex: 3;
+    min-width: 0;
+}
+
+/* 메인의 section영역 */
+.section > * + * {
+    margin-top: 20px;
+}
+
+.banner {
+    color: #fff;
+    background: linear-gradient(to bottom right, #0000b1, #4545de, #a7a7ff, #fff);
+    padding: 40px 36px;
+    border-radius: 8px;
+}
+
+.banner > small {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+.banner > h2 {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1.8;
+    margin: 8px 0 12px;
+}
+
+.banner > p {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* 공지 스트림 */
+.notice {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+}
+
+.notice > .tag {
+    padding: 4px 10px;
+    background-color: #2828a7;
+    color: #fff;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.notice > .more {
+    color: black;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* 카드 목록 */
+.cards {
+    /* grid : 가로, 세로 축을 동시 정렬이 가능한 레이아웃 속성 */
+    display: grid; /*2차원으로 정렬*/
+    grid-template-columns: repeat(3, 1fr); /*그리드의 열의 갯수와 너비를 정의*/
+    /* grid-template-rows: repeat(3, 1fr); */
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #b4b4b4;
+    border-radius: 12px;
+    padding: 12px;
+    flex: 1;
+    min-width: 233px;
+
+}
+
+/* 사이드 영역 */
+.aside > * + * {
+    margin-top: 20px;
+}
+
+.box {
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    padding: 18px;
+}
+
+.box > h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    margin-bottom: 12px;
+}
+
+.login > input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    padding: 0 12px;
+    font-size: 14px;
+}
+
+.login > button {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 6px;
+}
+
+.login-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.login-links a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+/* 바로가기 */
+.quick > li + li {
+    border-top: 1px solid #b4b4b4;
+}
+
+.quick a {
+    display: flex;
+    padding: 8px 4px;
+    font-size: 14px;
+    color: black;
+}
+
+.quick a:hover {
+    font-weight: 700;
+}
+
+
+
+/* 푸터 */
+.footer {
+    background-color: #a3a3a3;
+    color: #efefef;
+    padding: 32px 28px;
+}
+
+.footer > .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.footer > .footer-links > a {
+    color: #efefef;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.footer > .footer-links > a:hover {
+    color: #fff ;
+}
+
+.footer > p {
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.footer > .copy {
+    margin-top: 14px;
+
+}
+

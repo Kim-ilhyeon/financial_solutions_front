@@ -1,0 +1,521 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.space {
+    position: relative;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1b2745 0%,
+            #0f172a 40%,
+            #020617 100%
+        );
+
+    color: white;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+/* 헤더 네비게이션 */
+header > nav > ul {
+    position: fixed;
+    top: 30px;
+    right: 46px;
+}
+
+/* =========================
+   별 배경
+========================= */
+
+.stars {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+
+    background: white;
+
+    border-radius: 50%;
+
+    opacity: 0.8;
+
+    box-shadow:
+        0 0 6px white,
+        0 0 12px white;
+
+    animation:
+        moveStar linear infinite,
+        twinkle ease-in-out infinite;
+}
+
+/* 별 이동 */
+
+@keyframes moveStar {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+
+}
+
+/* 별 반짝임 */
+
+@keyframes twinkle {
+
+    0% {
+        opacity: 0.2;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+
+}
+
+/* =========================
+   컨텐츠 영역
+========================= */
+
+header,
+main,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================
+   헤더
+========================= */
+
+header {
+    padding: 30px 100px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px #38bdf8;
+}
+
+/* =========================
+   Hero
+========================= */
+
+.hero {
+    position: relative;
+
+    width: fit-content;
+
+    margin: 200px auto;
+}
+
+.circle {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+
+    transform:translate(-50%, -50%);
+    z-index: 1;
+}
+
+.hero h1 {
+    position: relative;
+
+    font-size: 80px;
+    font-weight: 700;
+
+    color: #38bdf8;
+
+    z-index: 2;
+
+    line-height: 1.1;
+
+    text-shadow:
+        0 0 10px rgba(56, 189, 248, 0.8),
+        0 0 20px rgba(56, 189, 248, 0.6),
+        0 0 40px rgba(56, 189, 248, 0.4);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+/* 로고 영역 */
+
+.hero > .my-name {
+    top: 0;
+    left: -34%;
+
+}
+
+.hero > .hero-title {
+    right: -34%;
+}
+
+/* About me 영역 */
+.about-me {
+    width: 80%;
+    height: 540px;
+    background: #d9d9d9;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-me > .profile {
+    display: flex;
+    /* justify-content: space-around; */
+    gap: 40px;
+    padding-left: 10%;
+    justify-content: space-around;
+}
+
+.about-me > .profile> .picture {
+    background: #FFFFFF; /*구분하기 위해 표시함*/
+    min-width: 220px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+.img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+}
+
+.about-me h1 {
+    font-size: 70px;
+    padding-left: 60px;
+    color: #424b64;
+    text-shadow: 4px 4px 5px #808fb3;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.links a {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    border-radius: 6px;
+    text-align: center;
+    padding: 14px;
+    background: #1b2745;
+    box-shadow: 4px 4px 5px #808fb3;
+}
+
+.links a:hover {
+    font-weight: 600;
+    background: #FFFFFF;
+    color: #1b2745;
+    transform: translateY(-5px);
+    box-shadow: 4px 4px 5px #808fb3;
+
+    transition: transform 0.2s;
+}
+
+.introduce {
+    color: #1b2745;
+    /* padding: 10px 40px; */
+    text-align: center;
+}
+
+/* Skills */
+.skills {
+    width: 100%;
+    height: 440px;
+    color: #76d6ff;
+}
+
+.skills > h1 {
+    font-size: 70px;
+    position: relative;
+    left: 16%;
+    top: 2%;
+
+    text-shadow:
+    0 0 5px #76d6ff,
+    0 0 10px #76d6ff,
+    0 0 20px #38bdf8,
+    0 0 40px #38bdf8;
+}
+
+.skills > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 60px;
+}
+
+.front {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.front-menu,
+.back-menu,
+.db-menu,
+.tool-menu {
+    position: absolute;
+    top: 60px;
+    left: 0;
+
+    width: 250px;
+    padding: 20px;
+
+    border: 1px solid #38bdf8;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px #76d6ff;
+    color: #FFFFFF;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: all 0.2s ease;
+}
+
+.front,
+.back,
+.db,
+.tools {
+    position: relative;
+}
+
+.front:hover .front-menu, 
+.back:hover .back-menu, 
+.db:hover .db-menu, 
+.tools:hover .tool-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-5px);
+}   
+
+.front-menu li,
+.back-menu li,
+.db-menu li,
+.tool-menu li {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 5px;
+}
+.gauge {
+    display: flex;
+}
+
+.gauge div {
+    width: 50px;
+    height: 8px;
+
+    background-color: #d1d5db;
+
+    border-radius: 5px;
+}
+
+.gauge .active {
+    background-color: #38bdf8;
+}
+
+.skills span {
+    display: inline-block;
+
+    padding: 12px 20px;
+
+    border: 2px solid #38bdf8;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+/* Activity 영역 */
+.activity {
+    height: 400px;
+    margin-left: 140px;
+}
+
+.activity-title {
+    position: relative;
+}
+
+.activity-title > h1 {
+    position: relative;
+    color: #84ff00;
+
+text-shadow:
+    0 0 3px #84ff00,
+    0 0 6px #84ff00,
+    0 0 8px #c8ff80;
+}
+
+.activity-title > .first-title {
+    color: #84ff00;
+    z-index: 1;
+    font-size: 70px;
+}
+
+.activity-title > .second-title {
+    color: #FFFFFF;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 70px;
+}
+
+.activity-content {
+    display: flex;
+    position: relative;
+}
+
+.activity-content > .arrow {
+    width: 2px;
+    height: 320px;
+    background: #84ff00;
+    position: absolute;
+    top: -18px;
+    left: 40px;
+}
+
+.activity-content > .content {
+    position: absolute;
+    left: 80px;
+    top: 10px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* 프로젝트 영역 */
+.project {
+    padding: 40px;
+}
+.project-title {
+    font-size: 70px;
+    color: #ff4dca;
+    text-shadow:
+    0 0 5px #ff4dca,
+    0 0 8px #ff4dca,
+    0 0 14px #ff9be4;
+    padding: 20px 100px;
+}
+
+.project-content {
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.project-content > .content {
+    border: 1px solid #ff4dca;
+    border-radius: 6px;
+    width: 90%;
+    position: relative;
+    padding: 20px;
+}
+
+.project-content > .content > h5 {
+    position: absolute;
+    right: 20px;
+    top: -12px;
+}
+
+
+/* 푸터 영역 */
+footer {
+    height: 60px;
+    position: relative;
+}
+.footer {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+}
+.footer > h5 {
+    color: #D9D9D9;
+    font-weight: 80;
+}
+.footer span {
+    color: #FFFFFF;
+    font-weight: 800;
+}

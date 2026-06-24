@@ -13,7 +13,7 @@ console.log((123).toString());  // "123"
 console.log(Boolean(0));    // false
 console.log(!"Hello");  // false
 console.log(!!"Hello");  // true
-console.log(Boolean("Hello"));  // false
+console.log(Boolean("Hello"));  // true
 
 // 묵시적 형변환
 // +에 문자열이 섞이면 -> 문자열로 연결

@@ -82,7 +82,7 @@ switch (month) {
 
 // 삼항 연산자
 const age = 17;
-console.log()
+console.log(age >= 19 ? 성인 : 미성년);
 
 
 

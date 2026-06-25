@@ -13,7 +13,7 @@ const user = {
 };
 
 // 객체 -> json문자열
-// 서버로 보낼 떄, JSON.stringfy(객체)
+// 서버로 보낼 떄, JSON.stringify(객체)
 // => 함수는 제외하고 변환됨.
 const jsonStr = JSON.stringify(user);
 

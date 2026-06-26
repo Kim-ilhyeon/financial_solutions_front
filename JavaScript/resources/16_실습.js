@@ -292,5 +292,6 @@ book.addStudent("박지원", { java: 100, db: 95, front: 90 });
 console.log(book.getRankList()); // [{ name:"박지원", total:285 }, ...] 내림차순
 console.log(book.getAverage());  // 265
 console.log(book.toJSON());      // 학생 목록 JSON 문자열
-// book.addStudent("");  // -> 에러 발생 (이름 누락)
+book.addStudent("");  // -> 에러 발생 (이름 누락)
+
 

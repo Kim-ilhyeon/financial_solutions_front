@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="login-box">
+        아이디 : <input type="text" id="user-id">
+        <button id="login-btn">로그인</button>
+        <span id="msg"></span>
+    </div>
+    <div id="welcome-box" class="none">
+        <span id="welcome-msg"></span>
+        <button id="logout-btn">로그아웃</button>
+    </div>
+
+    <script>
+        function showUserInfo(id) {
+            const loginBox = document.getElementById('login-box');
+            loginBox.classList.add('none');
+
+            const welcomeBox = document.getElementById('welcome-box');
+            welcomeBox.classList.remove('none');
+
+            welcomeBox.querySelector('#welcome-msg').textContent = `${id}님 환영합니다.`;
+        }
+        
+        const loginBtn = document.getElementById('login-btn');
+        loginBtn.addEventListener('click', function() {
+            const idRegExp = /^[a-zA-Z0-9]{5,12}$/;
+
+            const id = document.getElementById('user-id').value;
+            if (!idRegExp.test(id)) {
+                document.getElementById('msg').textContent = '아이디는 영문/숫자 5~12';
+                return;
+            }
+
+            localStorage.setItem('login-user', id);
+            document.getElementById('user-id').value = '';
+
+            showUserInfo(id);
+        });
+
+        const logOutBtn = document.getElementById('logout-btn');
+        logOutBtn.addEventListener('click', function() {
+            localStorage.removeItem('login-user');
+
+            const loginBox = document.getElementById('login-box');
+            loginBox.classList.remove('none');
+
+            const welcomeBox = document.getElementById('welcome-box');
+            welcomeBox.classList.add('none');
+        });
+
+        window.addEventListener('DOMContentLoaded', function() {
+            // window객체의 DOM이 완전히 로딩이 끝나면 1번 실행
+            const saveUser = localStorage.getItem('login-user');
+            if (saveUser) {
+                showUserInfo(saveUser);
+            }
+        });
+    </script>
+</body>
+
+</html>

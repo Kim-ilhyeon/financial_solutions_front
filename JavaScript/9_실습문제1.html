@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1. 회원가입 폼 검증</title>
+    <style>
+        #result {
+            border: 1px solid #333;
+            width: 400px;
+            min-height: 40px;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        .ok {
+            color: #00aa00;
+        }
+
+        .no {
+            color: #e20000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>회원가입 폼 검증</h1>
+    <form id="join-form">
+        아이디 : <input type="text" id="user-id"> <span class="msg" id="msg-id"></span><br>
+        비밀번호 : <input type="password" id="user-pwd"> <span class="msg" id="msg-pwd"></span><br>
+        비밀번호 확인 : <input type="password" id="user-pwd2"> <span class="msg" id="msg-pwd2"></span><br>
+        이메일 : <input type="text" id="email"> <span class="msg" id="msg-email"></span><br>
+        <button type="submit">가입</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+
+        // 2. 다음 규칙으로 검즘
+        /*
+        - 아이디 : 영문/숫자 5~12
+        - 비밀번호 : 8자 이상, 영문과 숫자를 모두 포함
+        - 비밀번호 확인 : 비밀번호와 일치
+        - 이메일 : 이메일 형식
+        */
+        const idInput = document.getElementById('user-id');
+        const pwdInput = document.getElementById('user-pwd');
+        const checkPwdInput = document.getElementById('user-pwd2');
+        const emailInput = document.getElementById('email');
+        // const id = idInput.value;
+        // const pwd = pwdInput.value;
+        // const checkPwd = checkPwdInput.value;
+        // const email = emailInput.value;
+
+        // 검증 규칙
+        const idRegExp = /^[a-zA-Z0-9]{5,12}$/;
+        const pwdRegExp = /^(?=.*[A-Za-z])(?=.*[0-9]).{8,}$/;
+        const emailRegExp = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        // 3. 각 항목 아래에 통과/실패 메세지를 표시한다. (통과는 초록색으로, 실패는 빨강색으로)
+        const idMsg = document.getElementById('msg-id');
+        const pwdMsg = document.getElementById('msg-pwd');
+        const checkPwdMsg = document.getElementById('msg-pwd2');
+        const emailMsg = document.getElementById('msg-email');
+        idInput.addEventListener('input', function () {
+            const id = idInput.value;
+            // id확인
+            if (idRegExp.test(id)) {
+                idMsg.textContent = '사용 가능';
+                idMsg.classList.remove('no');
+                idMsg.classList.add('ok');
+            } else {
+                idMsg.textContent = '사용 불가능';
+                idMsg.classList.remove('ok');
+                idMsg.classList.add('no');
+            }
+        });
+
+        pwdInput.addEventListener('input', function () {
+            const pwd = pwdInput.value;
+            // pwd확인
+            if (pwdRegExp.test(pwd)) {
+                pwdMsg.textContent = '사용 가능';
+                pwdMsg.classList.remove('no');
+                pwdMsg.classList.add('ok');
+            } else {
+                pwdMsg.textContent = '8자 이상, 영문+숫자 포함';
+                pwdMsg.classList.remove('ok');
+                pwdMsg.classList.add('no');
+            }
+        });
+        
+        checkPwdInput.addEventListener('input', function () {
+            const checkPwd = checkPwdInput.value;
+            const pwd = pwdInput.value;
+            
+            // checkPwd확인
+            if (pwdRegExp.test(checkPwd) && checkPwd === pwd) {
+                checkPwdMsg.textContent = '비밀번호 일치';
+                checkPwdMsg.classList.remove('no');
+                checkPwdMsg.classList.add('ok');
+            } else {
+                checkPwdMsg.textContent = '비밀번호가 다릅니다.';
+                checkPwdMsg.classList.remove('ok');
+                checkPwdMsg.classList.add('no');
+            }
+        });
+
+        emailInput.addEventListener('input', function () {
+            const email = emailInput.value;
+            // email확인
+            if (emailRegExp.test(email)) {
+                emailMsg.textContent = '올바른 형식';
+                emailMsg.classList.remove('no');
+                emailMsg.classList.add('ok');
+            } else {
+                emailMsg.textContent = '올바르지 않은 형식입니다.';
+                emailMsg.classList.remove('ok');
+                emailMsg.classList.add('no');
+            }
+        });
+
+        // 4. 모든 항목이 통과하면 결과 영역에 "00님, 가입을 환영합니다!"와 입력한 아이디, 이메일을 출력한다.
+        // 1. 폼 제출 시 (자동 새로고침) 기본 기능을 실행 X
+        const joinForm = document.getElementById('join-form');
+        const result = document.getElementById('result');
+        joinForm.addEventListener('submit', function (ev) {
+            const id = idInput.value;
+            const email = emailInput.value;
+
+            ev.preventDefault();
+            if ((idMsg.classList.contains('ok') &&
+                pwdMsg.classList.contains('ok') &&
+                checkPwdMsg.classList.contains('ok') &&
+                emailMsg.classList.contains('ok')
+                ) &&
+                !(idMsg.classList.contains('no') &&
+                pwdMsg.classList.contains('no') &&
+                checkPwdMsg.classList.contains('no') &&
+                emailMsg.classList.contains('no')
+                )
+            ) {
+                result.innerHTML = `<h3>${id}님, 가입을 환영합니다.</h3> <br>아이디: ${id}<br>이메일: ${email}`;
+            } else {
+                result.innerHTML = `<h3>입력값을 다시 확인해주세요.</h3>`;
+            }
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

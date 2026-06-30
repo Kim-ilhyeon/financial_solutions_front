@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할 일 목록(Todo)</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        #todo-list {
+            width: 350px;
+        }
+
+        #todo-list li {
+            border: 1px solid #333;
+            padding: 10px;
+            margin: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #todo-list li .done {
+            text-decoration: line-through;
+            color: #d9d9d9;
+        }
+
+        .del {
+            color: red;
+            font-weight: 400;
+            cursor: pointer;
+            border: none;
+            background: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="todo-input" placeholder="할 일 입력">
+    <button id="add-btn">추가</button>
+    <ul id="todo-list"></ul>
+
+    <script>
+        // 저장해야할 데이터는? 할 일 목록[할 일(제목, 완료 여부)]
+        let todos = JSON.parse(localStorage.getItem('todos') || '[]');
+
+        function saveTodos() {
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        const todoInput = document.getElementById('todo-input');
+        const addBtn = document.getElementById('add-btn');
+        const todoList = document.getElementById('todo-list');
+
+        function renderTodos() {
+            todoList.textContent = '';
+            todos.forEach(function (todo, idx) {
+                const newLi = document.createElement('li');
+                const todoSpan = document.createElement('span');
+                todoSpan.textContent = todo.title;
+                todoSpan.className = todo.isDone ? 'done' : '';
+
+                const newDel = document.createElement('button');
+                newDel.textContent = '삭제';
+                newDel.classList.add('del');
+
+                newLi.append(todoSpan);
+                newLi.append(newDel);
+                todoList.append(newLi);
+
+                newDel.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    todos = todos.filter((t) => todo.id !== t.id);
+                    saveTodos();
+                    renderTodos();
+                });
+
+                newLi.addEventListener('click', function () {
+                    todo.isDone = !todo.isDone;
+                    saveTodos();
+                    renderTodos();
+                });
+
+            });
+        }
+
+        addBtn.addEventListener('click', function () {
+            const todo = todoInput.value;
+            if (todo) {
+                todos.push({
+                    id: Date.now(),
+                    title: todo,
+                    isDone: false,
+                })
+
+                todoInput.value = '';
+                saveTodos();
+                renderTodos();
+            } else {
+                alert('할 일을 입력하세요.');
+                return;
+            }
+        });
+
+        renderTodos();
+
+    </script>
+</body>
+
+</html>
